@@ -4,7 +4,7 @@ public class Continue {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++){
             if (i % 2 == 1){
-                continue; // O continue interompe apenas a repetição que passa por ele e volta pro laço.
+                continue; // O "continue" interrompe apenas a repetição que passa por ele e volta para o laço.
             }
 
             System.out.println(i);
