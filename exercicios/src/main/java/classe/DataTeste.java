@@ -1,5 +1,7 @@
 package classe;
 
+import java.sql.SQLOutput;
+
 public class DataTeste {
     public static void main(String[] args) {
         Data data1 = new Data();
@@ -17,6 +19,12 @@ public class DataTeste {
 
         //Refatorado com metodo
         System.out.println("A data vai de " + data1.obterDataFormatada() + " a " + data2.obterDataFormatada());
+
+        Data desafio1 = new Data();
+        Data desafio2 = new Data(22, 11, 1991);
+
+        System.out.println("Desafio 1: " + desafio1.obterDataFormatada());
+        System.out.println("Desafio 2: " + desafio2.obterDataFormatada());
 
     }
 }
