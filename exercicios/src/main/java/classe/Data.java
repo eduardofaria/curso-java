@@ -5,6 +5,22 @@ public class Data {
     int mes;
     int ano;
 
+    /*
+    VALORES iniciais PADRÃO  dos Tipos:
+    byte, short, int, long -> 0
+    float, double -> 0.0
+    boolean -> false
+    char -> '\u0000'
+    Objetos -> null (ou seja, "String" recebe o valor "null" por padrão na inicialização)
+
+    "null" quer dizer: Não aponta para nenhum local/objeto  de memória.
+
+    Variáveis locais não são inicializadas por padrão. Exeto variáveis de classe, FORA de seus metodos, essas são inicializadas com esses valores padrão.
+    Variáveis criadas dentro de um constructor ou método (locais) que não forem inicializadas, não poderão ser
+    utilizadas, pois não receberão valores padrão.
+    Constantes (final), mesmo de classe,  precisam receber algum valor para serem usadas em métodos e contrutores.
+     */
+
     Data (){
         dia = 1;
         mes = 1;
