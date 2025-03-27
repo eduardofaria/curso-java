@@ -26,7 +26,7 @@ public class Pilha {
         System.out.println(livros.poll()); // Removeu Don Quixote
         System.out.println(livros.poll()); // Removeu O Pequeno Príncipe
         System.out.println(livros.poll()); // Retorna null, pois a pilha está vazia.
-       // System.out.println(livros.pop()); // Retorna exceção, pois a pilha está vazia
+       /// System.out.println(livros.pop()); // Retorna exceção, pois a pilha está vazia
        // System.out.println(livros.remove()); // Retorna exceção, pois a pilha está vazia
 
         System.out.println(livros.size());
