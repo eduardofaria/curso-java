@@ -4,16 +4,26 @@ public class Carro {
 
     final int VELOCIDADE_MAX;
     int velocidadeAtual;
+    private int delta = 10;
+
+    public int getDelta() {
+        return delta;
+    }
+
+    public void setDelta(int delta) {
+        this.delta = delta;
+    }
+
 
     Carro(int velocidadeMaxima){
         this.VELOCIDADE_MAX = velocidadeMaxima;
     }
 
     void acelerar(){
-        if ((velocidadeAtual + 5) >= VELOCIDADE_MAX) {
+        if ((velocidadeAtual + getDelta()) >= VELOCIDADE_MAX) {
             velocidadeAtual = VELOCIDADE_MAX;
         } else {
-            velocidadeAtual += 5;
+            velocidadeAtual += getDelta();
         }
     }// de 5 em 5. Ferrari de 15 em 15
     void frear(){
