@@ -20,6 +20,7 @@ public class TesteCarro {
         c2.desligarTurbo();
         c1.acelerar();
         c2.acelerar();
+        System.out.println(c2.nivelDoAr()); // 1 // Valor padrão (default) da interface Luxo()
         c1.acelerar();
         c2.acelerar();
         c1.acelerar();
