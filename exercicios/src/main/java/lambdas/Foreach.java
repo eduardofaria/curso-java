@@ -39,3 +39,5 @@ public class Foreach {
         System.out.println("Oi! Meu nome é " + nome);
     }
 }
+
+//As Interfaces Funcionais ficam no pacote padrão: java.util.function
