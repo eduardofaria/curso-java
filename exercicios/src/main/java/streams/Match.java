@@ -22,4 +22,6 @@ public class Match {
         System.out.println(alunos.stream().noneMatch(reprovado));
         System.out.println(alunos.stream().noneMatch(aprovado.negate())); // Com uma negação ao predicado. Ou seja, quando não houver o match com a condição none, então é TRUE.
     }
+
+    // OBS: allMatch, anyMatch e noneMatch são funções terminadoras.
 }
