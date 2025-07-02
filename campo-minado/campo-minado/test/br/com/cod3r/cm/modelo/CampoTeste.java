@@ -128,4 +128,12 @@ public class CampoTeste {
 
         assertTrue(campo22.isAberto() && !campo11.isAberto());
     }
+
+    @Test
+    void testeReinicia(){
+        campo.reiniciar();
+        assertTrue(!campo.isAberto() || !campo.isMarcado() || !campo.isMinado());
+    }
+
+
 }
