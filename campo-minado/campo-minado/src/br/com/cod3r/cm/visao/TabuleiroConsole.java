@@ -44,7 +44,7 @@ public class TabuleiroConsole {
         try{
             while(!tabuleiro.objetivoAlcancado()){
                 System.out.println(tabuleiro); // ou tabuleiro.toString()
-                String digitado = capturarValorDigitado("Digite (x e y) ou \"Sair\" para encerrar.");
+                String digitado = capturarValorDigitado("Digite (x e y) ou \"Sair\" para encerrar: ");
                 Iterator<Integer> xy = Arrays.stream(digitado.split(",")).map(d -> Integer.parseInt(d.trim())).iterator();
 
                 digitado = capturarValorDigitado("1 - Abrir ou 2 - (Des)Marcar ");
