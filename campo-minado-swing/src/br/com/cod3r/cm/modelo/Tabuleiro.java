@@ -2,17 +2,19 @@ package br.com.cod3r.cm.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class Tabuleiro {
+public class Tabuleiro implements CampoObservador{
 
     private int linhas;
     private int colunas;
     private int minas;
 
     private final List<Campo> campos = new ArrayList<>();
+    private final List<Consumer<Boolean>> observadores = new ArrayList<>();
 
-    public Tabuleiro(int linhas, int colunas, int minas) {
+    public Tabuleiro(int linhas, int colunas, int minas)  {
         this.linhas = linhas;
         this.colunas = colunas;
         this.minas = minas;
@@ -22,14 +24,17 @@ public class Tabuleiro {
         sortearMinas();
     }
 
+    public void registrarObservador(Consumer<Boolean> observador){
+        observadores.add(observador);
+    }
+
+    public void notificarObservadores(boolean resultado){
+        observadores.stream().forEach(o -> o.accept(resultado));
+    }
+
     public void abrir(int linha, int coluna){
-        try{
             campos.parallelStream().filter(c -> c.getLinha() == linha && c.getColuna() == coluna).findFirst().ifPresent(c -> c.abrir());
-        } catch (Exception e){
-            // FIXME Ajsutar a implementação do método abir
-            campos.forEach(c -> c.setAberto(true));
-            throw e;
-        }
+
     }
 
     public void alternarMarcacao(int linha, int coluna){
@@ -40,7 +45,9 @@ public class Tabuleiro {
     private void gerarCampos() {
         for (int i = 0; i < linhas; i++){
             for (int j = 0; j < colunas; j++){
-                campos.add(new Campo(i, j));
+                Campo campo = new Campo(i, j);
+                campo.registrarObservadores(this);
+                campos.add(campo);
             }
         }
     }
@@ -74,4 +81,19 @@ public class Tabuleiro {
     }
 
 
+    @Override
+    public void eventoOcorreu(Campo campo, CampoEvento evento) {
+        if(evento == CampoEvento.EXPLODIR){
+            System.out.println("Perdeu...");
+            mostrarMinas();
+            notificarObservadores(false);
+        } else if(objetivoAlcancado()){
+            System.out.println("Ganhou!");
+            notificarObservadores(true);
+        }
+    }
+
+    private void mostrarMinas(){
+        campos.stream().filter(c -> c.isMinado()).forEach(c -> c.setAberto(true));
+    }
 }
