@@ -7,9 +7,17 @@ import java.util.function.Predicate;
 
 public class Tabuleiro implements CampoObservador{
 
-    private int linhas;
-    private int colunas;
-    private int minas;
+    public int getLinhas() {
+        return linhas;
+    }
+
+    public int getColunas() {
+        return colunas;
+    }
+
+    private final int linhas;
+    private final int colunas;
+    private final int minas;
 
     private final List<Campo> campos = new ArrayList<>();
     private final List<Consumer<Boolean>> observadores = new ArrayList<>();
@@ -22,6 +30,10 @@ public class Tabuleiro implements CampoObservador{
         gerarCampos();
         associarVizinhos();
         sortearMinas();
+    }
+
+    public void paraCadaCampo (Consumer<Campo> funcao){
+        campos.forEach(funcao);
     }
 
     public void registrarObservador(Consumer<Boolean> observador){
