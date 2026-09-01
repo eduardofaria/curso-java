@@ -13,6 +13,7 @@ public class CriarBanco {
         final String senha = "12345678";
 
         Connection conexao = DriverManager.getConnection(url, usuario, senha);
+        //Connection connexao = FabricaConexao.getConexao();
 
         Statement stmt = conexao.createStatement();
         stmt.execute("CREATE DATABASE IF NOT EXISTS curso_java");
